@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="dozer-jdk8-support-1.0.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/dozer-jdk8-support-1.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
