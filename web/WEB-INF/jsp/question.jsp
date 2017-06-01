@@ -14,17 +14,21 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('.answerButton').click(function () {
-            var list = $('input[type=checkbox]:checked').val();
-            if (list == null) {
-                list = $('input[type=radio]:checked').val();
-            }
+            var checks = "";
+            $("input[name='answer']:checked").each(function () {
+                checks +=($(this).val()) + ',';
+            });
+
+
+
 
             $.ajax({
-                type: 'POST',
+                type: 'get',
                 url: '/controller',
+
                 data: {
-                    answer: list,
                     questionIndex: $(this).attr("value"),
+                    answer: checks,
                     command: 'collect'
                 },
                 success: function (result) {

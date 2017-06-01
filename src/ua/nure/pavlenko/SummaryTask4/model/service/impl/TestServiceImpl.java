@@ -1,6 +1,7 @@
 package ua.nure.pavlenko.SummaryTask4.model.service.impl;
 
 import ua.nure.pavlenko.SummaryTask4.controller.Attribute;
+import ua.nure.pavlenko.SummaryTask4.exception.AppException;
 import ua.nure.pavlenko.SummaryTask4.exception.UnsupportedException;
 import ua.nure.pavlenko.SummaryTask4.exception.ObjectNotExist;
 import ua.nure.pavlenko.SummaryTask4.model.dao.DaoFactory;
@@ -10,10 +11,12 @@ import ua.nure.pavlenko.SummaryTask4.model.dto.FilterDto;
 import ua.nure.pavlenko.SummaryTask4.model.dto.TestDto;
 
 import ua.nure.pavlenko.SummaryTask4.model.entity.Test;
+import ua.nure.pavlenko.SummaryTask4.model.entity.TypeOfTest;
 import ua.nure.pavlenko.SummaryTask4.model.service.api.Service;
 import ua.nure.pavlenko.SummaryTask4.utils.mapper.BeanMapper;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,7 +41,9 @@ public class TestServiceImpl implements Service<TestDto> {
 
     @Override
     public List<TestDto> getAll() {
-        return null;
+        List<Test> list = testDao.getAll();
+        List<TestDto> dtoList = beanMapper.listMapToList(list, TestDto.class);
+        return dtoList;
     }
 
     @Override
@@ -49,7 +54,9 @@ public class TestServiceImpl implements Service<TestDto> {
     }
 
     @Override
-    public TestDto save(TestDto entity) throws UnsupportedException {
+    public TestDto save(TestDto entity) throws AppException {
+        Test test = beanMapper.singleMapper(entity, Test.class);
+        testDao.save(test);
         return null;
     }
 
@@ -130,6 +137,16 @@ public class TestServiceImpl implements Service<TestDto> {
             return "%";
         }
         return parameter;
+    }
+
+    public List<TestDto> filterByType(List<TestDto> list, TypeOfTest typeOfTest){
+        List<TestDto> result = new ArrayList<>();
+        for(TestDto testDto : list){
+            if(testDto.getTypeOfTest().equals(typeOfTest)){
+                result.add(testDto);
+            }
+        }
+        return result;
     }
 
 }

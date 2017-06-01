@@ -498,7 +498,7 @@
 	.userinfo textarea{
 		float:left;
 		width:400px;
-		height:17px;
+		height:25px;
 		padding:2px 0 2px 2px;
 		font: 13px MS Reference Sans Serif;
 		color:#103a3f;
@@ -511,7 +511,7 @@
 		float:right;
 	}
 	.userinfo .edit{
-		height:23px;
+		height:25px;
 		width:23px;
 		float:left;
 		margin:0;
@@ -523,3 +523,99 @@
 		background-color:#f0f0f0;
 	}
 	/*-----------------------------------!profile.html----------------------------------*/
+
+	/*-----------------------------------adminOffice.html----------------------------------*/
+	.table{
+		width: 100%;
+		border-collapse: collapse;
+		text-align: start;
+
+	}
+	th, td{
+		border: 1px solid black;
+		vertical-align: top;
+	}
+	.field{
+		width: 80%;
+		height: 25px;
+		margin:3px 0 3px 3px;
+
+
+	}
+	.bigField{
+
+		width:80%;
+		height:300px;
+
+
+		color:#103a3f;
+		margin:3px 0 3px 3px;
+		resize:none;
+
+	}
+	.littleField{
+
+		width:80%;
+		height:150px;
+
+
+		color:#103a3f;
+		margin:3px 0 3px 3px;
+		resize:none;
+
+	}
+	.answerField{
+
+		width:80%;
+		height:40px;
+
+
+		color:#103a3f;
+		margin:3px 0 3px 3px;
+		resize:none;
+
+	}
+	.selectButton{
+		width: 80%;
+		height: 25px;
+		margin:3px 0 3px 3px;
+	}
+	.button_menu{
+		background-color: #e7e7e7;
+		color: black; /* Green */
+		border: 2px solid #555555;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin:3px 0 3px 3px;
+	}
+	.buttonSubmit{
+		background-color: #e7e7e7;
+		color: black; /* Green */
+		border: 2px solid #555555;
+		padding: 9px 15px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 10px;
+		margin:3px 0 3px 3px;
+	}
+	#selectQuest{
+		width: 450px;
+		height: 25px;
+		margin:3px 0 3px 3px;
+	}
+	.buttonBlocking{
+		background-color: #e7e7e7;
+		color: black; /* Green */
+		border: 2px solid #555555;
+		padding: 8px 13px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 11px;
+		margin:3px 0 3px 3px;
+	}
+	/*-----------------------------------!adminOffice.html----------------------------------*/

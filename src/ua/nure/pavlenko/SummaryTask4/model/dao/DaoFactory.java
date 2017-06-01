@@ -20,6 +20,8 @@ public class DaoFactory {
     private Dao<Test> testDao;
     private Dao<Question> questionDao;
     private Dao<Answer> answerDao;
+    private Dao<Answer> userAnswerDao;
+    private Dao<UserResult> userResultDao;
 
 
 
@@ -42,6 +44,8 @@ public class DaoFactory {
             testDao = new TestDaoImpl(Test.class);
             questionDao = new QustionDaoImpl(Question.class);
             answerDao = new AnswerDaoImpl(Answer.class);
+            userAnswerDao  = new UserAnswerDaoImpl(Answer.class);
+            userResultDao = new UserResultDaoImpl(UserResult.class);
         }
     }
 

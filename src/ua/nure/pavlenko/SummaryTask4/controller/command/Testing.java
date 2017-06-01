@@ -2,10 +2,9 @@ package ua.nure.pavlenko.SummaryTask4.controller.command;
 
 import ua.nure.pavlenko.SummaryTask4.Path;
 import ua.nure.pavlenko.SummaryTask4.controller.Attribute;
-import ua.nure.pavlenko.SummaryTask4.model.dto.QuestDto;
+
 import ua.nure.pavlenko.SummaryTask4.model.dto.QuestionAnswerDto;
-import ua.nure.pavlenko.SummaryTask4.model.entity.Answer;
-import ua.nure.pavlenko.SummaryTask4.model.entity.Question;
+
 import ua.nure.pavlenko.SummaryTask4.utils.CommandUtil;
 
 import javax.servlet.ServletException;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
+
 import java.util.List;
 
 /**

@@ -12,6 +12,7 @@
     <h2>Category</h2>
     <ul>
         <form id="category">
+            <input type="hidden" name="command" value="tests">
             <c:forEach items="${sessionScope.subjects}" var="subject">
                 <li>
                     <button name="subject_id" form="category" value="${subject.id}">${subject.name}</button>

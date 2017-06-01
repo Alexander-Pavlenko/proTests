@@ -42,4 +42,5 @@ public final class Fields {
     public static final String TEST_ID = "test_id";
     public static final String QUESTION = "question";
     public static final String QUESION_CODE = "code";
+    public static final String RESULT_FIELD = "result_field";
 }

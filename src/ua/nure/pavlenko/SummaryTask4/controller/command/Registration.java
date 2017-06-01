@@ -1,5 +1,6 @@
 package ua.nure.pavlenko.SummaryTask4.controller.command;
 
+import org.apache.log4j.Logger;
 import ua.nure.pavlenko.SummaryTask4.Path;
 import ua.nure.pavlenko.SummaryTask4.controller.Attribute;
 import ua.nure.pavlenko.SummaryTask4.exception.*;
@@ -14,6 +15,7 @@ import java.io.IOException;
  * Created by Alexander on 23.05.2017.
  */
 public class Registration extends Command {
+    final static Logger logger = Logger.getLogger(Registration.class);
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String forward = Path.PAGE_REGISTRATION;
@@ -25,6 +27,7 @@ public class Registration extends Command {
                         request.getParameter(Attribute.LOGIN),
                         request.getParameter(Attribute.NAME),
                         request.getParameter(Attribute.E_MAIL));
+                logger.info("Create new user: " + request.getParameter(Attribute.LOGIN));
                 request.setAttribute(Attribute.MASSAGE, Massages.SUCCESS_REGISTRATION);
             } catch (ValidationException e) {
                 request.setAttribute(Attribute.MASSAGE, e.getMessage());
@@ -38,7 +41,7 @@ public class Registration extends Command {
                 System.out.println(e.getMessage());
             } catch (Exception e) {
                 request.setAttribute(Attribute.MASSAGE, Massages.SERVER_ERROR);
-                e.printStackTrace();
+                logger.error(e.getMessage());
             } finally {
                 reurnRequest(request);
                 forward = Path.PAGE_REGISTRATION;

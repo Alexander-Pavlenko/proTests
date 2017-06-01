@@ -30,40 +30,40 @@
                 var password;
                 if ((text = document.getElementById("userLogin").value) != "") {
                     if (text.match(reg) != null) {
-                        massage = "Поле 'логин' не должен содержать слудуещее симолы $%!#'/\\\"";
+                        massage = "Field 'login' can not have next characters $%!#'/\\\"";
                         valid = false;
                     }
                 }
                 else {
-                    massage = "Пожалуйста, введите данные в поле 'логин'.";
+                    massage = "Please, input correct date to 'login' field.";
                     valid = false;
                 }
                 if ((text = document.getElementById("userName").value) != "") {
                     if (text.match(reg) != null) {
-                        massage = "Поле 'имя и фамилия' не должен сожержать слудуещее симолы $%!#'/\\\"";
+                        massage = "Field 'name and last name' can not have next characters $%!#'/\\\"";
                         valid = false;
                     }
                 }
                 else {
-                    massage = "Пожалуйста, введите данные в поле 'имя и фамилия'.";
+                    massage = "Please, input correct date to 'first and last name' field.";
                     valid = false;
                 }
                 if ((text = document.getElementById("email").value) != "") {
                     if (text.match(reg) != null) {
-                        massage = "Поле 'email' не должен сожержать слудуещее симолы $%!#'/\\\"";
+                        massage = "Field 'e-mail' can not have next characters $%!#'/\\\"";
                         valid = false;
                     }
                     if (text.match("@") == null) {
-                        massage = "Неверный e-meil!";
+                        massage = "Invalid e-mail!";
                         valid = false;
                     }
                 } else {
-                    massage = "Пожалуйста, введите email в поле 'email'.";
+                    massage = "Please, input correct date to 'e-mail' field.";
                     valid = false;
                 }
                 if ((text = document.getElementById("password").value) != "") {
                     if (text.match(reg) != null) {
-                        massage = "Поле 'пароль' не должен сожержать слудуещее симолы $%!#'/\\\"";
+                        massage = "Field 'password' can not have next characters $%!#'/\\\"";
                         valid = false;
                     }
                     else {
@@ -71,23 +71,23 @@
                     }
                 }
                 else {
-                    massage = "Пожалуйста, введите пароль в поле 'пароль'.";
+                    massage = "Please, input correct date to 'password' field.";
                     valid = false;
                 }
                 if ((text = document.getElementById("password_confirm").value) != "") {
                     if (text.match(reg) != null) {
-                        massage = "Поле 'пароль' не должен сожержать слудуещее симолы $%!#'/\\\"";
+                        massage = "Field 'password confirm' can not have next characters $%!#'/\\\"";
                         valid = false;
                     }
                     else {
                         if (password != text) {
                             valid = false;
-                            massage = "Пароли не совпадают!";
+                            massage = "Passwords do not match!";
                         }
                     }
                 }
                 else {
-                    massage = "Пожалуйста, введите пароль в поле 'пароль'.";
+                    massage = "Please, input correct date to 'password' field.";
                     valid = false;
                 }
                 $("#massage").text(massage);
@@ -112,24 +112,24 @@
 
                         <h1> Sign up </h1>
                         <p>
-                            <label for="userLogin" class="uname">Ваш логин</label>
+                            <label for="userLogin" class="uname">Your login</label>
                             <input id="userLogin" name="login" type="text" value="${login}" placeholder="login"/>
                         </p>
                         <p>
-                            <label for="userName" class="uname">Ваше имя и фамилия</label>
+                            <label for="userName" class="uname">Your first and last name</label>
                             <input id="userName" name="name" type="text" value="${name}" placeholder="Ivan Ivanov"/>
                         </p>
                         <p>
-                            <label for="email" class="youmail"> Ваш email</label>
+                            <label for="email" class="youmail"> Your e-mail</label>
                             <input id="email" name="email" type="text"  value="${email}" placeholder="ivan@gmail.com"/>
                         </p>
                         <p>
-                            <label for="password" class="youpasswd">Ваш пароль </label>
+                            <label for="password" class="youpasswd">Your password</label>
                             <input id="password" name="password" type="password"
                                    placeholder="eg. X8df!90EO"/>
                         </p>
                         <p>
-                            <label for="password_confirm" class="youpasswd">Повторите Ваш пароль </label>
+                            <label for="password_confirm" class="youpasswd">Please, confirm your password</label>
                             <input id="password_confirm" name="passwords_confirm" type="password"
                                    placeholder="eg. X8df!90EO"/>
                         </p>

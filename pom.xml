@@ -91,6 +91,7 @@
             <artifactId>util-bridges</artifactId>
             <version>6.0.4</version>
         </dependency>
+
     </dependencies>
 
 </project>

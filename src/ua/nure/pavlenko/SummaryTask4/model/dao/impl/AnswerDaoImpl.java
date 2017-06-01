@@ -10,10 +10,7 @@ import ua.nure.pavlenko.SummaryTask4.model.entity.Test;
 import ua.nure.pavlenko.SummaryTask4.model.entity.TypeOfTest;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +18,7 @@ import java.util.List;
  * Created by Alexander on 27.05.2017.
  */
 public class AnswerDaoImpl extends CRUDDAO<Answer> {
-
+    private static final String INSERT = "INSERT INTO answer (answer, truthful, question_id) VALUES (?,?,?)";
     private final String SELECT_BY_QUESTION_ID = "SELECT * FROM answer WHERE question_id = ?";
 
     public AnswerDaoImpl(Class<Answer> type) {
@@ -35,7 +32,13 @@ public class AnswerDaoImpl extends CRUDDAO<Answer> {
 
     @Override
     protected PreparedStatement createInsertStatement(Connection connection, Answer entity) throws SQLException, IOException {
-        return null;
+        PreparedStatement preparedStatement = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+        int k = 1;
+        preparedStatement.setString(k++, entity.getAnswer());
+        preparedStatement.setBoolean(k++, entity.getTruthful());
+        preparedStatement.setInt(k++, entity.getQuestion_id());
+        return preparedStatement;
+
     }
 
     @Override

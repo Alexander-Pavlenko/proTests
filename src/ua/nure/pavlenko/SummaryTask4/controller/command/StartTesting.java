@@ -5,9 +5,12 @@ import ua.nure.pavlenko.SummaryTask4.controller.Attribute;
 import ua.nure.pavlenko.SummaryTask4.exception.AppException;
 import ua.nure.pavlenko.SummaryTask4.model.dto.QuestDto;
 import ua.nure.pavlenko.SummaryTask4.model.dto.TestDto;
+import ua.nure.pavlenko.SummaryTask4.model.dto.UserDto;
 import ua.nure.pavlenko.SummaryTask4.model.entity.Answer;
 import ua.nure.pavlenko.SummaryTask4.model.entity.Question;
 import ua.nure.pavlenko.SummaryTask4.model.dto.QuestionAnswerDto;
+import ua.nure.pavlenko.SummaryTask4.model.entity.User;
+import ua.nure.pavlenko.SummaryTask4.model.entity.UserResult;
 import ua.nure.pavlenko.SummaryTask4.model.service.impl.QuestionServiceImpl;
 import ua.nure.pavlenko.SummaryTask4.model.service.impl.TestServiceImpl;
 
@@ -16,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,10 +47,15 @@ public class StartTesting extends Command {
                 addAnswer(questions);
                 TestDto testDto = TestServiceImpl.getInstance().
                         getById(Integer.parseInt(test_id));
+                UserResult userResult = new UserResult();
+                userResult.setDateStart(LocalDateTime.now());
+                userResult.setUserDto((UserDto) session.getAttribute(Attribute.USER));
+                session.setAttribute(Attribute.USER_RESULT, userResult);
                 session.setAttribute(Attribute.TEST_LIST, list);
                 session.setAttribute(Attribute.QUESTION_LIST, questDtos);
                 session.setAttribute(Attribute.TEST_ID, test_id);
                 session.setAttribute(Attribute.TEST, testDto);
+
             } catch (AppException e) {
                 forward = Path.COMMAND_RESULT;
                 request.setAttribute(Attribute.FINISHED, Attribute.TRUE);

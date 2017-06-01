@@ -33,13 +33,13 @@
 
             <input type="hidden" value="${id}" name="subject_id">
             <input type="hidden" value="tests" name="command">
-            <p id="firststroka"><i class="fa fa-list-ol" aria-hidden="true"></i> Total
+            <p id="firststroka"> Total
                 tests<br>${requestScope.count}
             <p>
             <p><i class="fa fa-filter" aria-hidden="true"></i> Filters</p>
-            <input type="checkbox" name="type_topic" value="topic" ${requestScope.type_topic}>Topic<br>
-            <input type="checkbox" name="type_module" value="module" ${requestScope.type_module}>Module<br>
-            <input type="checkbox" name="type_course" value="course" ${requestScope.type_course}>Course<br>
+            <input type="checkbox" name="type_topic" value="topic" ${requestScope.type_topic}> Topic<br>
+            <input type="checkbox" name="type_module" value="module" ${requestScope.type_module}> Module<br>
+            <input type="checkbox" name="type_course" value="course" ${requestScope.type_course}> Course<br>
             <p>Sort</p>
             <select>
                 <option value="date">By name</option>
@@ -55,7 +55,7 @@
                     <div class="descrtest">
                         <img src="/pages/img/subjectIcons/java.png">
                         <h4><a href="controller?command=test&test_id=${test.id}">${test.name}</a><br>
-                        ${test.typeOfTest}</h4>
+                                ${test.typeOfTest}</h4>
                         <p>${test.description}</p>
                     </div>
                 </c:forEach>

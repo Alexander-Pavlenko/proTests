@@ -8,10 +8,7 @@ import ua.nure.pavlenko.SummaryTask4.model.entity.Test;
 import ua.nure.pavlenko.SummaryTask4.model.entity.TypeOfTest;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +21,7 @@ public class TestDaoImpl extends CRUDDAO<Test> {
             "and `subject_id` like ? " +
             "and (`type` like ? or `type` like ? or `type` like ?) " +
             "and `isDelete` = 0";
+    private static final String INSERT = "INSERT INTO test (name, subject_id, description, type, icon, test_time) VALUES (?,?,?,?,?,?)";
 
     public TestDaoImpl(Class<Test> type) {
         super(type);
@@ -36,7 +34,17 @@ public class TestDaoImpl extends CRUDDAO<Test> {
 
     @Override
     protected PreparedStatement createInsertStatement(Connection connection, Test entity) throws SQLException, IOException {
-        return null;
+        PreparedStatement preparedStatement = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+        int k = 1;
+        preparedStatement.setString(k++, entity.getName());
+
+        preparedStatement.setInt(k++, entity.getSubject_id());
+        preparedStatement.setString(k++, entity.getDescription());
+        preparedStatement.setString(k++, entity.getTypeOfTest().getType());
+        preparedStatement.setString(k++, entity.getPathToIcon());
+        preparedStatement.setInt(k++, entity.getTimeTest());
+
+        return preparedStatement;
     }
 
     @Override

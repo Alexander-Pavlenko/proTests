@@ -1,5 +1,6 @@
 package ua.nure.pavlenko.SummaryTask4.model.service.impl;
 
+import ua.nure.pavlenko.SummaryTask4.exception.AppException;
 import ua.nure.pavlenko.SummaryTask4.model.dao.DaoFactory;
 import ua.nure.pavlenko.SummaryTask4.model.dao.api.Dao;
 import ua.nure.pavlenko.SummaryTask4.model.dto.SubjectDto;
@@ -58,7 +59,9 @@ public class SubjectServiceImpl implements Service<SubjectDto>{
     }
 
     @Override
-    public SubjectDto save(SubjectDto entity) {
+    public SubjectDto save(SubjectDto entity) throws AppException {
+        Subject subject = beanMapper.singleMapper(entity, Subject.class);
+        subjectDao.save(subject);
         return null;
     }
 

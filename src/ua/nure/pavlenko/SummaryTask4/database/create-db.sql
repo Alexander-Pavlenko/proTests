@@ -39,25 +39,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `login_UNIQUE` (`login` ASC),
   UNIQUE INDEX `e_mail_UNIQUE` (`e_mail` ASC));
-
-
--- -----------------------------------------------------
--- Table `pro_tests`.`user_resultat`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `user_resultat` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `user_id` INT NOT NULL,
-  `date_start` DATETIME NOT NULL,
-  `date_finish` DATETIME NOT NULL,
-  `isDelete` TINYINT(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`),
-  INDEX `resultat_user_idx` (`user_id` ASC),
-  CONSTRAINT `resultat_user`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `user` (`id`));
-
-
--- -----------------------------------------------------
+  -- -----------------------------------------------------
 -- Table `pro_tests`.`Subject`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `subject` (
@@ -66,7 +48,6 @@ CREATE TABLE IF NOT EXISTS `subject` (
   `icon` VARCHAR(150) NOT NULL,
   `isDelete` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`));
-
 
 -- -----------------------------------------------------
 -- Table `pro_tests`.`test`
@@ -85,6 +66,30 @@ CREATE TABLE IF NOT EXISTS `test` (
   CONSTRAINT `test_subject`
     FOREIGN KEY (`subject_id`)
     REFERENCES `subject` (`id`));
+
+-- -----------------------------------------------------
+-- Table `pro_tests`.`user_resultat`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `user_resultat` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `test_id` INT NOT NULL,
+  `result_field` INT NOT NULL,
+  `date_start` DATETIME NOT NULL,
+  `date_finish` DATETIME NOT NULL,
+  `isDelete` TINYINT(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `resultat_user`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`),
+    CONSTRAINT `resultat_test`
+    FOREIGN KEY (`test_id`)
+    REFERENCES `test` (`id`));
+
+
+
+
+
 
 
 -- -----------------------------------------------------

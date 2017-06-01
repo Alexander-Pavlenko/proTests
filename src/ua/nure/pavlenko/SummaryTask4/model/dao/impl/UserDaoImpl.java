@@ -4,6 +4,7 @@ package ua.nure.pavlenko.SummaryTask4.model.dao.impl;
 import ua.nure.pavlenko.SummaryTask4.exception.Massages;
 import ua.nure.pavlenko.SummaryTask4.exception.ObjectNotExist;
 import ua.nure.pavlenko.SummaryTask4.model.dao.sql.Fields;
+import ua.nure.pavlenko.SummaryTask4.model.entity.Role;
 import ua.nure.pavlenko.SummaryTask4.model.entity.User;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.util.List;
 public class UserDaoImpl extends CRUDDAO<User> {
     private static final String INSERT = "INSERT INTO user (login, password, first_Name, last_name, e_mail, role, date) VALUES (?,?,?,?,?,?,?)";
     private final String FIND_BY_LOGIN = "SELECT * FROM user WHERE login LIKE ?";
+    private final String UPDATE = "UPDATE user SET login = ?, password = ?, first_Name = ?, last_name = ?, e_mail = ?, role = ?, date = ?, isBlocked = ? WHERE id = ?";
 
     ///////////////////////////////////////////////////////////////////////////////
 
@@ -27,7 +29,19 @@ public class UserDaoImpl extends CRUDDAO<User> {
 
     @Override
     protected PreparedStatement createUpdateStatement(Connection connection, User entity) throws SQLException, IOException {
-        return null;
+        PreparedStatement preparedStatement = connection.prepareStatement(UPDATE);
+        int k = 1;
+        preparedStatement.setString(k++, entity.getLogin());
+        preparedStatement.setString(k++, entity.getPassword());
+        preparedStatement.setString(k++, entity.getFirst_name());
+        preparedStatement.setString(k++, entity.getLast_name());
+        preparedStatement.setString(k++, entity.getE_mail());
+        preparedStatement.setString(k++, entity.getRole().getType());
+        preparedStatement.setTimestamp(k++, Timestamp.valueOf(entity.getDateRegestration()));
+        preparedStatement.setInt(k++, entity.getStatus());
+        preparedStatement.setInt(k++, entity.getId());
+
+        return preparedStatement;
     }
 
     @Override
@@ -64,7 +78,7 @@ public class UserDaoImpl extends CRUDDAO<User> {
             user.setDateRegestration(resultSet.getTimestamp(Fields.USER_DATE_REGISTRATION).toLocalDateTime());
             user.setPassword(resultSet.getString(Fields.USER_PASSWORD));
             user.setLogin(resultSet.getString(Fields.USER_LOGIN));
-           // user.setRole(Role.valueOf(resultSet.getString(Fields.USER_ROLE)));
+            user.setRole(Role.valueOf((resultSet.getString(Fields.USER_ROLE)).toUpperCase()));
             user.setIsActivated(user.setStatus(resultSet.getInt(Fields.USER_IS_ACTIVATED)));
             user.setIsBlocked(user.setStatus(resultSet.getInt(Fields.USER_IS_BLOCK)));
 

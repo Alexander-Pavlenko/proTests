@@ -7,13 +7,15 @@ import ua.nure.pavlenko.SummaryTask4.model.service.api.Service;
  */
 public class Attribute {
     public static final String USER = "user";
+    public static final String ADMIN = "admin";
+
     public static final String LOGIN = "login";
     public static final String PASSWORD = "password";
     public static final String MASSAGE = "massage";
     public static final String E_MAIL = "email";
 
 
-    public static final String LANGUAGE = "lang";
+    public static final String LANGUAGE = "language";
     public static final String LANGUKR = "ukr";
     public static final String LANGRUS = "rus";
     public static final String LANGENG = "eng";
@@ -63,6 +65,37 @@ public class Attribute {
     public static final String COLLECT = "collect";
     public static final String ANSWER = "answer";
     public static final String ANSWER_LIST = "list";
+    public static final String USER_RESULT = "userResult";
+    public static final String LOGOUT = "logout";
+    public static final String RESULT = "result";
+    public static final String RESULTS = "results";
+    public static final String PROFILE = "profile";
+    public static final String ADMIN_OFFICE = "adminOffice";
+    public static final String ICON = "icon";
+    public static final String USERS = "users";
+
+    public static final String DESCRIPTION = "description";
+    public static final String TYPE = "type";
+    public static final String TIME_FOR_TEST = "timeForTest";
+    public static final String CODE = "code";
+    public static final String TRUTHFUL = "truthful";
+    public static final String CREATE_QUEST = "createQuestion";
+    public static final String CREATE_TEST = "createTest";
+    public static final String CREATE_SUBJECT  = "createSubject";
+    public static final String ADMIN_OFFICE_USER  = "adminOfficeUser";
+    public static final String ACTION  = "action";
 
 
+    public static final String TYPES = "types";
+    public static final String USER_ID = "user_id";
+    public static final Integer MAX_ANSWERS = 8;
+
+
+    public static final String BLOCKING_USER = "blocking";
+    public static final String INDEX_PATH = "INDEX_PATH";
+    public static final String IS_ADMIN = "isAdmin";
+    public static final String GO_REGISTRATION = "goRegistration";
+    public static final String COMMAND_PREV = "commandPrev";
+    public static final String COMMAND = "command";
+    public static final Object DEFAULT_LANGUAGE = "language.resources_ru";
 }

@@ -84,8 +84,8 @@ INSERT INTO answer(`question_id`, `answer`, `truthful`)
 VALUE (1, 'return Integer.valueOf(string_1.replace("COM", "")) > Integer.valueOf(string_2.replace("COM", ""));',FALSE);
 
 
-INSERT INTO user_resultat(`user_id`, `date_start`, `date_finish`)
-VALUE (1, '2017-10-21', '2017-10-21');
+INSERT INTO user_resultat(`user_id`, `result_field`, `date_start`, `date_finish`)
+VALUE (1, 100, '2017-10-21',  '2017-10-21');
 
 INSERT INTO user_answer(`answer_id`, `user_resultat_id`)
 VALUE (1, 1);

@@ -8,7 +8,6 @@ import ua.nure.pavlenko.SummaryTask4.model.entity.Entity;
  */
 @Data
 public class QuestDto extends Entity {
-    String answer = null;
     Integer index;
 
     public QuestDto(Integer id, Integer index) {

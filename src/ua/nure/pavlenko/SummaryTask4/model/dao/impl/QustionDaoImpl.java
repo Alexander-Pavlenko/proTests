@@ -12,10 +12,7 @@ import ua.nure.pavlenko.SummaryTask4.model.entity.TypeOfTest;
 import ua.nure.pavlenko.SummaryTask4.model.service.impl.QuestionServiceImpl;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +21,7 @@ import java.util.List;
  */
 public class QustionDaoImpl extends CRUDDAO<Question> {
     private final String SELECT_BY_TEST_ID = "SELECT * FROM question WHERE test_id = ?";
+    private static final String INSERT = "INSERT INTO question (question, test_id, code) VALUES (?,?,?)";
 
     public QustionDaoImpl(Class<Question> type) {
         super(type);
@@ -36,7 +34,12 @@ public class QustionDaoImpl extends CRUDDAO<Question> {
 
     @Override
     protected PreparedStatement createInsertStatement(Connection connection, Question entity) throws SQLException, IOException {
-        return null;
+        PreparedStatement preparedStatement = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+        int k = 1;
+        preparedStatement.setString(k++, entity.getQuestion());
+        preparedStatement.setInt(k++, entity.getTest_id());
+        preparedStatement.setString(k++, entity.getCode());
+        return preparedStatement;
     }
 
     @Override

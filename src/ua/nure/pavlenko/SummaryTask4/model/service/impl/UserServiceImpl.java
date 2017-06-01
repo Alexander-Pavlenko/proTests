@@ -16,12 +16,12 @@ import java.util.List;
 /**
  * Created by Alexander on 23.05.2017.
  */
-public class UserServiceImpl implements Service<UserDto> {
+public class UserServiceImpl implements Service<User> {
     private static UserServiceImpl service;
     private Dao<User> userDao;
     private BeanMapper beanMapper;
 
-    private UserServiceImpl(){
+    private UserServiceImpl() {
         userDao = DaoFactory.getInstance().getUserDao();
         beanMapper = BeanMapper.getInstance();
     }
@@ -33,21 +33,46 @@ public class UserServiceImpl implements Service<UserDto> {
         return service;
     }
 
+
     @Override
-    public List<UserDto> getAll() {
+    public List<User> getAll() {
+        List<User> list = userDao.getAll();
+        return list;
+    }
+
+    @Override
+    public User getById(Integer id) {
+        User user = userDao.getById(id);
+        return user;
+    }
+
+    @Override
+    public User save(User entity) throws AppException {
         return null;
     }
 
     @Override
-    public UserDto getById(Integer id) {
-        return null;
+    public void delete(Integer key) {
+
     }
+
+    @Override
+    public void update(User entity){
+        try {
+            userDao.update(entity);
+        } catch (AppException e) {
+            SuppressedException suppressedException = new SuppressedException();
+            suppressedException.addSuppressed(new UniqueException(Massages.INFORM_LOGIN_BUSY + " or " + Massages.INFORM_EMAIL_BUSY));
+            throw new SuppressedException();
+        }
+    }
+
 
     public UserDto save(String password, String login, String name, String e_mail) throws AppException {
-        if(password.length()<6){
+        if (password.length() < 6) {
             throw new ValidationException(Massages.ERR_SHORT_PASSWORD);
         }
-        if(!name.contains(" ")){
+        if (!name.contains(" ")) {
             throw new ValidationException(Massages.ERR_UNCORRECTED_NAME);
         }
         User user = new User();
@@ -65,21 +90,24 @@ public class UserServiceImpl implements Service<UserDto> {
     public UserDto login(String login, String password) throws ObjectNotExist, InvalidatePassword {
         UserDto userDto = findUserByLogin(login);
         if (!confirmPassword(userDto, password)) {
-             throw new InvalidatePassword(Massages.INFORM_INVALIDATE_PASSWORD);
+            throw new InvalidatePassword(Massages.INFORM_INVALIDATE_PASSWORD);
         }
         return userDto;
 
     }
-    private boolean confirmPassword(UserDto userDto, String password){
+
+    private boolean confirmPassword(UserDto userDto, String password) {
         return userDao.getById(userDto.getId()).getPassword().equals(password);
     }
+
     private UserDto findUserByLogin(String login) throws ObjectNotExist {
-        User user = ((UserDaoImpl)userDao).findUserByLogin(login);
+        User user = ((UserDaoImpl) userDao).findUserByLogin(login);
         UserDto userDto = beanMapper.singleMapper(user, UserDto.class);
         return userDto;
 
     }
-    public boolean isFreeLogin(String login){
+
+    public boolean isFreeLogin(String login) {
         try {
             findUserByLogin(login);
         } catch (ObjectNotExist userNotExist) {
@@ -90,18 +118,4 @@ public class UserServiceImpl implements Service<UserDto> {
     }
 
 
-    @Override
-    public UserDto save(UserDto entity) throws UnsupportedException {
-        throw new UnsupportedException();
-    }
-
-    @Override
-    public void delete(Integer key) {
-
-    }
-
-    @Override
-    public void update(UserDto entity) {
-
-    }
 }

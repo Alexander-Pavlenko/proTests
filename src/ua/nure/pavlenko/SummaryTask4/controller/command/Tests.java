@@ -39,9 +39,7 @@ public class Tests extends Command {
         }
         try {
             if(request.getParameter(Attribute.SEARCH_BUTTON)!=null){
-                if (request.getAttribute(Attribute.SEARCH).equals("")) {
-                    return forward;
-                }
+
             }
             request.setAttribute(Attribute.SUBJECT_ID,
                     session.getAttribute(Attribute.SUBJECT_ID));

@@ -20,4 +20,9 @@ public class Massages {
     public static final String INFORM_INVALIDATE_PASSWORD = "Invalidate password.";
     public static final String SERVER_ERROR = "Server Error! Try again late!";
     public static final String INFORM_ABOUT_NOT_FIND_RESULTS = "Tests do not find.";
+    public static final String RESULTS_DO_NOT_FIND = "Results did not find";
+    public static final String CREATE_SUCCESS = "Create success!";
+    public static final String INFORM_UPDATE_SUCCESS = "Update success!";
+    public static final String ERROR_LOGIN_FOR_PASS_TEST = "You must login!";
+
 }

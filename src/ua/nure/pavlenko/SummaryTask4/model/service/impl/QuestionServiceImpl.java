@@ -33,7 +33,8 @@ public class QuestionServiceImpl implements Service<Question>{
     }
     @Override
     public List<Question> getAll() {
-        return null;
+        List<Question> questions = questionDao.getAll();
+        return questions;
     }
 
     @Override
@@ -42,8 +43,10 @@ public class QuestionServiceImpl implements Service<Question>{
     }
 
     @Override
-    public Question save(Question entity) throws UnsupportedException {
-        return null;
+    public Question save(Question entity) throws AppException {
+        entity = questionDao.save(entity);
+        AnswerServiceImpl.getInstance().save(entity);
+        return entity;
     }
 
     @Override

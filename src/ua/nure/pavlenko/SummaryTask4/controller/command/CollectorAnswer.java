@@ -31,9 +31,10 @@ public class CollectorAnswer extends Command {
 
         list = (List<QuestionAnswerDto>) session.getAttribute(Attribute.TEST_LIST);
 
+
         if (request.getParameter(Attribute.ANSWER) != null) {
 
-            String[] arrayAnswer = request.getParameterValues(Attribute.ANSWER);
+            String[] arrayAnswer = request.getParameter(Attribute.ANSWER).split(",");
             listAnswer = new ArrayList<>();
             for (String id : arrayAnswer) {
                 listAnswer.add(CommandUtil.returnElementById(list.get(index).getQuestion().getAnswers(), id));

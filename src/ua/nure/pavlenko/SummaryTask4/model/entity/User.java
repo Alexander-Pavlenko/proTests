@@ -19,7 +19,7 @@ public class User extends Entity {
     private String photoPath;
     private LocalDateTime dateRegestration;
     private String e_mail;
-    private List<UserResultat> userResultants;
+    private List<UserResult> userResultants;
     private Role role;
     private Boolean isActivated;
     private Boolean isBlocked;
@@ -34,6 +34,12 @@ public class User extends Entity {
             return false;
         }
         return true;
+    }
+    public Integer getStatus(){
+        if(this.isBlocked){
+            return 1;
+        }
+        return 0;
     }
     public void parseName (String name){
         String[] fullname = name.split(" ");

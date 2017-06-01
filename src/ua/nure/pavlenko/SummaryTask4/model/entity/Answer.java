@@ -12,6 +12,7 @@ public class Answer extends Entity {
     private Boolean truthful;
 
     public Answer() {
+        truthful = false;
     }
 
     public Answer(Integer question_id, String answer, Boolean truthful) {

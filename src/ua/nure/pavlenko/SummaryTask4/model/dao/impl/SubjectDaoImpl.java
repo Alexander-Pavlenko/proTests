@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class SubjectDaoImpl extends CRUDDAO<Subject> {
 
-
+    private static final String INSERT = "INSERT INTO subject (name, icon) VALUES (?,?)";
 
 
     public SubjectDaoImpl(Class<Subject> type) {
@@ -27,7 +27,11 @@ public class SubjectDaoImpl extends CRUDDAO<Subject> {
 
     @Override
     protected PreparedStatement createInsertStatement(Connection connection, Subject entity) throws SQLException, IOException {
-      return null;
+        PreparedStatement preparedStatement = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+        int k = 1;
+        preparedStatement.setString(k++, entity.getName());
+        preparedStatement.setString(k++, entity.getIcon());
+        return preparedStatement;
     }
 
     @Override

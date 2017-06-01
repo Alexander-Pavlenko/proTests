@@ -26,20 +26,9 @@ public class HomeCommand extends Command {
         }
         req.setAttribute(language, Attribute.ACTIVE);
         req.setAttribute(Attribute.BUTTON_ACTIVE_HOME, Attribute.ACTIVE);
-
-
-
-
         SubjectServiceImpl subjectService = SubjectServiceImpl.getInstance();
         List<SubjectDto> list = subjectService.getAll();
-        System.out.println(list);
         req.setAttribute(Attribute.SUBJECTS, list);
-
-
-
-
-
-
         return Path.PAGE_HOME;
     }
 

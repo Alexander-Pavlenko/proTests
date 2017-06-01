@@ -60,7 +60,10 @@
             <div id="second">45</div>
         </div>
     </div>
-    <button>Finish test</button>
+    <form action="/controller" id="finishTest" method="post">
+        <input type="hidden" name="command" value="result">
+    </form>
+    <button form="finishTest">Finish test</button>
 
         <div name="questionField" id="questionField">
             <c:import url="/WEB-INF/jsp/question.jsp"></c:import>

@@ -1,11 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <input type="hidden" name="command" value="/home">
 <style>
     <%@include file="/pages/css/style.css" %>
 </style>
 <head>
+    <fmt:setBundle basename="${sessionScope.language}"/>
     <meta charset="utf-8">
     <title>ProTests</title>
 
@@ -14,7 +16,7 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp"></c:import>
 <section class="welcome">
-    <h1>Welcome to ProTests</h1>
+    <h1><fmt:message key="welcomeTo"/> ProTests</h1>
     <div class="tests">
         <form action="/controller" id="goTests">
             <input type="hidden" name="command" value="tests">

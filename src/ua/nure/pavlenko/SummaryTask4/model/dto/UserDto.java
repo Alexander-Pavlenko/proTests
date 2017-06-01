@@ -3,6 +3,7 @@ package ua.nure.pavlenko.SummaryTask4.model.dto;
 import com.mysql.jdbc.TimeUtil;
 import lombok.Data;
 import ua.nure.pavlenko.SummaryTask4.model.entity.Entity;
+import ua.nure.pavlenko.SummaryTask4.model.entity.Role;
 
 
 /**
@@ -14,4 +15,6 @@ public class UserDto extends Entity {
     private String first_name;
     private String last_name;
     private String photoPath;
+    private String e_mail;
+    private Role role;
 }
